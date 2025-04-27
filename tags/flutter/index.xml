@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flutter on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/flutter/</link><description>Recent content in Flutter on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/flutter/index.xml" rel="self" type="application/rss+xml"/><item><title>That’s how I create flutter launcher icon</title><link>https://blog.yuzumone.net/posts/thats-how-i-create-flutter-launcher-icon/</link><pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/thats-how-i-create-flutter-launcher-icon/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1637607699029-8568cd757a5a?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFjJTIwZG9ja3xlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by TheRegisti on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>ランチャーアイコンを作ってくれる flutter_launcher_icons はとても便利です． &lt;br/>
+Android の Adaptive Icon を SVG でやりたい場合は不十分です（雑に見てみた感じ png しか指定できないようでした）． &lt;br/>&lt;/p></description></item><item><title>Flutter web oidc authentication</title><link>https://blog.yuzumone.net/posts/flutter-web-oidc-authentication/</link><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-web-oidc-authentication/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1562770584-eaf50b017307?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8a2V5fGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Kelly Sikkema on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter web で OpenID Connect やってたメモ． &lt;br/>
+以下を参考にしました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/openid_client">openid_client | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>まずは認証ページを出すところまで． &lt;br/>
+Flutter web は SPA なので Client Secret は渡せるようになっていますが渡しません． &lt;br/>&lt;/p></description></item><item><title>Flutter Android Release Build on GitHub Actions</title><link>https://blog.yuzumone.net/posts/flutter-android-release-build-on-github-actions/</link><pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-android-release-build-on-github-actions/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1590595906931-81f04f0ccebb?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Richy Great on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="workflow-dot-yml">workflow.yml&lt;/h2>
+&lt;p>ほんと単純で keystore を用意して，いわゆる local.properties を作成して build しているだけですね． &lt;br/>
+flavor も考えるとつらいですが自分のケースの場合は — dart-define=&amp;lt;foo=bar&amp;gt; で済むケースがほとんどです． &lt;br/>&lt;/p></description></item><item><title>Encryption with private key in RSA using Dart</title><link>https://blog.yuzumone.net/posts/encryption-with-private-key-in-rsa-using-dart/</link><pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/encryption-with-private-key-in-rsa-using-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1522794338816-ee3a17a00ae8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGtleXxlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Debby Hudson on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>どうしても RSA Private key を使用して署名をしなきゃいけない案件があったのでやりました． &lt;br/>&lt;/p>
+&lt;p>使用したライブラリは下記です． &lt;br/>
+死ぬほど助かりました． &lt;br/>&lt;/p></description></item><item><title>Flutter web docker on GitHub Container Registry</title><link>https://blog.yuzumone.net/posts/flutter-web-docker-on-github-container-registry/</link><pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-web-docker-on-github-container-registry/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1504383633899-a17806f7e9ad?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDB8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Victoire Joncheray on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>GitHub Container Registry が GA したみたいなので使ってみます． &lt;br/>
+ついでなので Flutter web で． &lt;br/>
+普通に docker push するのは普通過ぎるので actions でやります． &lt;br/>
+サンプルレポジトリは下記です． &lt;br/>&lt;/p></description></item><item><title>Making Flutter web apps responsive</title><link>https://blog.yuzumone.net/posts/making-flutter-web-apps-responsive/</link><pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/making-flutter-web-apps-responsive/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Domenico Loia on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter web でレスポンシブ対応したときのメモ． &lt;br/>
+responsive_builder を使うとめっちゃ簡単． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/responsive_builder">responsive_builder | Flutter Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>以下のようにデバイスに応じて Widget を返すようにするだけ． &lt;br/>&lt;/p></description></item><item><title>Testing out sembast</title><link>https://blog.yuzumone.net/posts/testing-out-sembast/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/testing-out-sembast/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&amp;amp;w=2048&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by fabio on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter でモバイルだけでなくデスクトップや Web などマルチプラットフォームに対応している NoSQL データベースライブラリ sembast を使ってみたのでメモ． &lt;br/>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prometheus on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/prometheus/</link><description>Recent content in Prometheus on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sat, 28 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/prometheus/index.xml" rel="self" type="application/rss+xml"/><item><title>Prometheus time unittest</title><link>https://blog.yuzumone.net/posts/prometheus-time-unittest/</link><pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/prometheus-time-unittest/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvY2t8ZW58MHx8MHx8fDI%3D">
+&lt;/figure>
+
+&lt;p>現在の unixtime を返してくれる time() を使ったときの Prometheus Unittest の書き方です． &lt;br/>&lt;/p>
+&lt;p>よくあるのは SSL 証明書が切れそうなときアラートを発破したいという時かと思います． &lt;br/>
+このアラートのテストをしたいと思ったとき，time() をどう mock するかみたいなことを考えるかと思います． &lt;br/>&lt;/p></description></item></channel></rss>

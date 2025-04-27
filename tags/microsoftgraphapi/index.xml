@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MicrosoftGraphAPI on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/microsoftgraphapi/</link><description>Recent content in MicrosoftGraphAPI on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/microsoftgraphapi/index.xml" rel="self" type="application/rss+xml"/><item><title>Microsoft Graph API Calendar</title><link>https://blog.yuzumone.net/posts/microsoft-graph-api-calendar/</link><pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/microsoft-graph-api-calendar/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FsZW5kYXJ8ZW58MHx8MHx8fDI%3D">&lt;figcaption>
+ &lt;h4>Photo by Eric Rothermel on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>最近歯医者に行きはじめました．そこで困るようになったのが予約です． &lt;br/>
+完全リモートワークなのでどの日時でも問題ないのですが，個人の予定表と仕事の予定表をどちらも確認しつつ決めないといけません． &lt;br/>
+個人予定表と仕事予定表を一括で見られるようにするために，Microsoft Graph API を利用してかんたんな同期をやってみます． &lt;br/>&lt;/p></description></item></channel></rss>

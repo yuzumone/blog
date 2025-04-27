@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/python/</link><description>Recent content in Python on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sun, 18 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Try flet</title><link>https://blog.yuzumone.net/posts/try-flet/</link><pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/try-flet/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Andrew Neel on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>雑にいうと Python で Flutter web みたいなことができる． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://flet.dev/">Build multi-platform apps in Python powered by Flutter&lt;/a> &lt;br/>&lt;/p>
+&lt;p>とりあえずサンプルコードだけ載せておく． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">flet&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">flet&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Page&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Row&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">TextField&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">icons&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">page&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Page&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">title&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Flet counter example&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vertical_alignment&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;center&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">TextField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;0&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">text_align&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;right&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">100&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">minus_click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">plus_click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Row&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">icons&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">REMOVE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">on_click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">minus_click&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">icons&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ADD&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">on_click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">plus_click&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">alignment&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;center&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">flet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">main&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Flutter の Widget 的なやつを Page class に add していくと良い感じに Frontend ができるという感じです． &lt;br/>
+やはり Dart は採用しにくいというところもあると思うので，Python で雑というか簡単に Frontend ができるのは良いです． &lt;br/>&lt;/p></description></item><item><title>Build RPM Package of Python</title><link>https://blog.yuzumone.net/posts/build-rpm-package-of-python/</link><pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/build-rpm-package-of-python/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1577702312706-e23ff063064f?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Brandable Box on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Python パッケージの RPM 化といえば bdist_rpm がありますが，この場合依存パッケージも PRM 化する必要があります． &lt;br/>
+ということで venv でいい感じにパッケージ化するときの spec ファイルの内容をメモ． &lt;br/>&lt;/p></description></item></channel></rss>

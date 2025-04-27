@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dart on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/dart/</link><description>Recent content in Dart on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sat, 30 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/dart/index.xml" rel="self" type="application/rss+xml"/><item><title>Unix domain socket on Dart</title><link>https://blog.yuzumone.net/posts/unix-domain-socket-on-dart/</link><pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/unix-domain-socket-on-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjF8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by israel palacio on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Dart で Unix domain socket やっていきます． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/dart-lang/sdk/issues/42716">Support making HTTP requests through unix sockets&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;p>2.17.0–94.0.dev 以上であれば動くはず． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Dart SDK version: 2.17.6 &lt;span class="o">(&lt;/span>stable&lt;span class="o">)&lt;/span> &lt;span class="o">(&lt;/span>Tue Jul &lt;span class="m">12&lt;/span> 12:54:37 &lt;span class="m">2022&lt;/span> +0200&lt;span class="o">)&lt;/span> on &lt;span class="s2">&amp;#34;linux_x64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="get">Get&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="k">import&lt;/span> &lt;span class="s1">&amp;#39;dart:convert&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">import&lt;/span> &lt;span class="s1">&amp;#39;dart:io&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">arguments&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">HttpClient&lt;/span> &lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">HttpClient&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">..&lt;/span>&lt;span class="n">connectionFactory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span> &lt;span class="n">uri&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">String&lt;/span>&lt;span class="o">?&lt;/span> &lt;span class="n">proxyHost&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="o">?&lt;/span> &lt;span class="n">proxyPort&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">proxyHost&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">proxyPort&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">address&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">InternetAddress&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/var/run/docker.sock&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">type:&lt;/span> &lt;span class="n">InternetAddressType&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">unix&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Socket&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">startConnect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">address&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">..&lt;/span>&lt;span class="n">findProxy&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span> &lt;span class="n">uri&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="s1">&amp;#39;DIRECT&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kd">final&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">await&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getUrl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">parse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http://localhost/_ping&amp;#39;&lt;/span>&lt;span class="p">)).&lt;/span>&lt;span class="n">then&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">statusCode&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">final&lt;/span> &lt;span class="n">responseText&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">await&lt;/span> &lt;span class="n">response&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">utf8&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">decoder&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">fold&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">String&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">String&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">responseText&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>実行結果 &lt;br/>&lt;/p></description></item><item><title>Work Angular Dart as single binary</title><link>https://blog.yuzumone.net/posts/work-angular-dart-as-single-binary/</link><pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/work-angular-dart-as-single-binary/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MzZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Caspar Camille Rubin on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>テンプレートをさくっと作成． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart create -t server-shelf foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">cd&lt;/span> foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ngdart create web
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>とりあえず shelf を動かしてみるとこんな感じ． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart bin/server.dart
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Server listening on port &lt;span class="m">8080&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022-03-27T09:27:03.905499 0:00:00.014259 GET &lt;span class="o">[&lt;/span>200&lt;span class="o">]&lt;/span> /
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022-03-27T09:27:09.375476 0:00:00.005037 GET &lt;span class="o">[&lt;/span>200&lt;span class="o">]&lt;/span> /echo/foo---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ curl http://localhost:8080/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello, World!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ curl http://localhost:8080/echo/foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">foo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>次に Angular Dart の方を build して動かしてみます． &lt;br/>&lt;/p></description></item><item><title>Release tabler for displaying ASCII table format in Dart</title><link>https://blog.yuzumone.net/posts/release-tabler-for-displaying-ascii-table-format-in-dart/</link><pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/release-tabler-for-displaying-ascii-table-format-in-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Abel Y Costa on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>go-lang の tablewriter 的な ASCII テーブルで表示するやつが欲しかったの作りました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/tabler">tabler | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>example のとおりですが，こんな感じで使えます． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">t&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Tabler&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">22&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">333&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">t&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// +---+----+-----+
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// | a | b | c |
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// | 1 | 22 | 333 |
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// +---+----+-----+
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Dart は dart2native あるし，null safety だし Flutter が無かったとしても結構好きなんですが，こんな基本的と言えるライブラリが無いとは． &lt;br/>
+それだけ Flutter でしか使われてないんだろうなぁ． &lt;br/>&lt;/p></description></item><item><title>I tried Dart frontend using shelf</title><link>https://blog.yuzumone.net/posts/i-tried-dart-frontend-using-shelf/</link><pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-tried-dart-frontend-using-shelf/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1592178036823-ccb0e0e67562?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2hlbGZ8ZW58MHx8MHx8fDI%3D">
+&lt;/figure>
+
+&lt;p>backend はこちら． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://blog.yuzumone.net/posts/i-tried-dart-backend/">I tried Dart backend&lt;/a> &lt;br/>&lt;/p>
+&lt;p>Flutter Web とか AngularDart などあるんですけどちょっと雑にやりたいという場合です． &lt;br/>
+コードは下記の通り． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">const&lt;/span> &lt;span class="n">index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;&amp;lt;!doctype html&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;head&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;link href=&amp;#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; integrity=&amp;#34;sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/head&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;body&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;main role=&amp;#34;role&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;h1 class=&amp;#34;mt-5&amp;#34;&amp;gt;{{ title }}&amp;lt;/h1&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/main&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/body&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;lt;/html&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">handler&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">const&lt;/span> &lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Pipeline&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">addMiddleware&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">logRequests&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">addHandler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">_echoRequest&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">await&lt;/span> &lt;span class="n">io&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">serve&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">handler&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_hostname&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Serving at http://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="n">server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">address&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">:&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="n">server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">port&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;span class="n">Future&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Response&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">_echoRequest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Request&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">template&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">output&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">template&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">renderString&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="s1">&amp;#39;title&amp;#39;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;hoge&amp;#39;&lt;/span>&lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;content-type&amp;#39;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;text/html&amp;#39;&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ok&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nl">headers:&lt;/span> &lt;span class="n">headers&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>index.html を静的ファイルで用意するのが普通だと思うんですが，dart compile して動かしてみたかったので dart ファイルに収めました． &lt;br/>
+go-bindata などのように executable に静的ファイルを include するような仕組みが Dart にもあるといいですね． &lt;br/>
+気が向いたら作りたい． &lt;br/>&lt;/p></description></item><item><title>Migrating to null safety on Dart</title><link>https://blog.yuzumone.net/posts/migrating-to-null-safety-on-dart/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/migrating-to-null-safety-on-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1612953117963-5fd4f0736aa8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Jamie Davies on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>いよいよ Dart の null safety が stable となりました． &lt;br/>
+これまで何回か紹介しているライブラリ ipaddr を null safety にしていく過程をメモしておきます． &lt;br/>
+参考までに pullrq は下記です． &lt;br/>&lt;/p></description></item><item><title>I tried Dart backend</title><link>https://blog.yuzumone.net/posts/i-tried-dart-backend/</link><pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-tried-dart-backend/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1606300015207-d4e499ffca80?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8N3x8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Goran Ivos on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter には盛り上がりがみられる Dart でバックエンドもやってみました． &lt;br/>
+この時気になるのがフレームワークどうするか問題ですね． &lt;br/>
+メジャーどころは下記の 2 つです． &lt;br/>&lt;/p></description></item><item><title>Testing out sembast</title><link>https://blog.yuzumone.net/posts/testing-out-sembast/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/testing-out-sembast/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&amp;amp;w=2048&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by fabio on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter でモバイルだけでなくデスクトップや Web などマルチプラットフォームに対応している NoSQL データベースライブラリ sembast を使ってみたのでメモ． &lt;br/>&lt;/p></description></item><item><title>I created a Dart library that simplifies working with IP addresses</title><link>https://blog.yuzumone.net/posts/i-created-a-dart-library-that-simplifies-working-with-ip-addresses/</link><pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-created-a-dart-library-that-simplifies-working-with-ip-addresses/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1520085601670-ee14aa5fa3e8?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Alexandru Acea on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Dart で ipaddress をいい感じにするライブラリを作りました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/ipaddr">yuzumone/ipaddr&lt;/a> &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/ipaddr">ipaddr | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="モチベーション">モチベーション&lt;/h2>
+&lt;p>生活していると「あーこのアドレスがこのセグメント内かどうか調べたいわー」となることが多いと思います． &lt;br/>
+これまでは Python でやることが多かったのですが，Dart でやりたい欲がふつふつと湧いてきました． &lt;br/>
+軽く見た感じ Python の ipaddress 相当のものがなさそうだったので作りました． &lt;br/>&lt;/p></description></item></channel></rss>

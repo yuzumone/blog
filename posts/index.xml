@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on yuzumone's blog</title><link>https://blog.yuzumone.net/posts/</link><description>Recent content in Posts on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Installing k3s on rasberry pi 5</title><link>https://blog.yuzumone.net/posts/installing-k3s-on-rasberry-pi-5/</link><pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/installing-k3s-on-rasberry-pi-5/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1631553127988-36343ac5bb0c?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Jainath Ponnala on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="raspberry-pi-imager">Raspberry Pi Imager&lt;/h2>
+&lt;p>ssh とか昔は mkdir とかやった記憶なんですが，今は Imager の設定で ssh や鍵認証まで設定できるようになっていました． &lt;br/>&lt;/p>
+&lt;h2 id="static-ip">Static IP&lt;/h2>
+&lt;p>現在は NetworkManager で設定するのがナウいようです． &lt;br/>
+初期は設定ファイルがないので名前を設定することでまずはファイルを生成します． &lt;br/>&lt;/p></description></item><item><title>Try launchd on macOS</title><link>https://blog.yuzumone.net/posts/try-launchd-on-macos/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/try-launchd-on-macos/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1583361703300-bf0a4dc1723c?q=80&amp;amp;w=2671&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Joshua Hoehne on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>macOS でのデーモン系の管理は launchd というものを利用するみたいですね． &lt;br/>
+早速 yaskkserv2 を launchd で管理してみました． &lt;br/>&lt;/p>
+&lt;p>以下に記載の通りですが，ユーザ管理ものは &lt;code>~/Library/LaunchAgents&lt;/code> に配置するようなのでそこに置きます． &lt;br/>&lt;/p></description></item><item><title>Arch Linux Install Battle</title><link>https://blog.yuzumone.net/posts/arch-linux-install-battle/</link><pubDate>Sun, 11 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/arch-linux-install-battle/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1577998555981-6e798325914e?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by svklimkin on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>grub から systemd-boot にしたいなぁと思っていて，どうせなら綺麗にするかということで &lt;br/>&lt;/p>
+&lt;h2 id="environment">Environment&lt;/h2>
+&lt;ul>
+&lt;li>Surface Pro &lt;br/>&lt;/li>
+&lt;li>Type Cover Keyboard (US) &lt;br/>&lt;/li>
+&lt;/ul>
+&lt;h2 id="インターネット接続">インターネット接続&lt;/h2>
+&lt;p>WiFi でやっていく &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ip link &lt;span class="nb">set&lt;/span> wlan0 up
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wpa_supplicant -B -i wlan0 -c &amp;lt;&lt;span class="o">(&lt;/span>wpa_passphrase SSID password&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dhcpcd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="パーティションの作成">パーティションの作成&lt;/h2>
+&lt;p>gdisk と思ったら最近はワンライナーでいけるらしい &lt;br/>&lt;/p></description></item><item><title>Get RedirectUri on PowerShell</title><link>https://blog.yuzumone.net/posts/get-redirecturi-on-powershell/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/get-redirecturi-on-powershell/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1545262810-77515befe149?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Marc Rentschler on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>PowerShell で curl -w “%{redirect_url}” 相当がしたくなったのでメモ． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="k">Param&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="no">String&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="nv">$Uri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$request&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nb">Invoke-WebRequest&lt;/span> &lt;span class="n">-Method&lt;/span> &lt;span class="n">Head&lt;/span> &lt;span class="n">-Uri&lt;/span> &lt;span class="nv">$Uri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$redirectedUri&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nv">$request&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">BaseResponse&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">ResponseUri&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">AbsoluteUri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo &lt;/span>&lt;span class="nv">$redirectedUri&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Try flet</title><link>https://blog.yuzumone.net/posts/try-flet/</link><pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/try-flet/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Andrew Neel on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>雑にいうと Python で Flutter web みたいなことができる． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://flet.dev/">Build multi-platform apps in Python powered by Flutter&lt;/a> &lt;br/>&lt;/p>
+&lt;p>とりあえずサンプルコードだけ載せておく． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">flet&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">flet&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Page&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Row&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">TextField&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">icons&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">page&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Page&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">title&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Flet counter example&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vertical_alignment&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;center&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">TextField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;0&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">text_align&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;right&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">100&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">minus_click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">plus_click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">txt_number&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">page&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Row&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">icons&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">REMOVE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">on_click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">minus_click&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txt_number&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">IconButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">icons&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ADD&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">on_click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">plus_click&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">alignment&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;center&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">flet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">main&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Flutter の Widget 的なやつを Page class に add していくと良い感じに Frontend ができるという感じです． &lt;br/>
+やはり Dart は採用しにくいというところもあると思うので，Python で雑というか簡単に Frontend ができるのは良いです． &lt;br/>&lt;/p></description></item><item><title>Melbourne memo</title><link>https://blog.yuzumone.net/posts/melbourne-memo/</link><pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/melbourne-memo/</guid><description>&lt;h2 id="飛行機">飛行機&lt;/h2>
+&lt;p>カンタス航空を利用しました． &lt;br/>
+行きは羽田 -&amp;gt; メルボルン，帰りはメルボルン -&amp;gt; シドニー -&amp;gt; 羽田という感じでした． &lt;br/>
+帰りメルボルン空港はカンタス航空専用ターミナルからの出発のため，PP で利用できるラウンジがなかったのが残念． &lt;br/>
+シドニー国際線ターミナルは PP で利用できるラウンジがありますが追加料金が $20 必要なタイプ，そのほかには $36 分の配給が得られるレストランが利用できます． &lt;br/>
+今回はトランジットの時間が短く利用はできませんでした． &lt;br/>&lt;/p></description></item><item><title>Prometheus time unittest</title><link>https://blog.yuzumone.net/posts/prometheus-time-unittest/</link><pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/prometheus-time-unittest/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvY2t8ZW58MHx8MHx8fDI%3D">
+&lt;/figure>
+
+&lt;p>現在の unixtime を返してくれる time() を使ったときの Prometheus Unittest の書き方です． &lt;br/>&lt;/p>
+&lt;p>よくあるのは SSL 証明書が切れそうなときアラートを発破したいという時かと思います． &lt;br/>
+このアラートのテストをしたいと思ったとき，time() をどう mock するかみたいなことを考えるかと思います． &lt;br/>&lt;/p></description></item><item><title>California Disneyland Resort memo</title><link>https://blog.yuzumone.net/posts/california-disneyland-resort-memo/</link><pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/california-disneyland-resort-memo/</guid><description>&lt;p>カリフォルニア の Disneyland Resort に行ってきました．事前準備などのメモです． &lt;br/>&lt;/p>
+&lt;h2 id="飛行機">飛行機&lt;/h2>
+&lt;p>ZIPAIR を利用しました．LCC なので受託手荷物は追加料金が必要です． &lt;br/>
+今回は事前座席指定・機内食・受託手荷物のセットになっている Value パッケージを追加しました． &lt;br/>
+座席については充電用 USB ポート・タブレット用ホルダーがあったり，無料で WiFi が利用できるので不便はありませんでした． &lt;br/>
+これで格安でいけるならありですね． &lt;br/>&lt;/p></description></item><item><title>Microsoft Graph API Calendar</title><link>https://blog.yuzumone.net/posts/microsoft-graph-api-calendar/</link><pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/microsoft-graph-api-calendar/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1435527173128-983b87201f4d?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FsZW5kYXJ8ZW58MHx8MHx8fDI%3D">&lt;figcaption>
+ &lt;h4>Photo by Eric Rothermel on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>最近歯医者に行きはじめました．そこで困るようになったのが予約です． &lt;br/>
+完全リモートワークなのでどの日時でも問題ないのですが，個人の予定表と仕事の予定表をどちらも確認しつつ決めないといけません． &lt;br/>
+個人予定表と仕事予定表を一括で見られるようにするために，Microsoft Graph API を利用してかんたんな同期をやってみます． &lt;br/>&lt;/p></description></item><item><title>Unix domain socket on Dart</title><link>https://blog.yuzumone.net/posts/unix-domain-socket-on-dart/</link><pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/unix-domain-socket-on-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjF8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by israel palacio on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Dart で Unix domain socket やっていきます． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/dart-lang/sdk/issues/42716">Support making HTTP requests through unix sockets&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;p>2.17.0–94.0.dev 以上であれば動くはず． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Dart SDK version: 2.17.6 &lt;span class="o">(&lt;/span>stable&lt;span class="o">)&lt;/span> &lt;span class="o">(&lt;/span>Tue Jul &lt;span class="m">12&lt;/span> 12:54:37 &lt;span class="m">2022&lt;/span> +0200&lt;span class="o">)&lt;/span> on &lt;span class="s2">&amp;#34;linux_x64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="get">Get&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="k">import&lt;/span> &lt;span class="s1">&amp;#39;dart:convert&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">import&lt;/span> &lt;span class="s1">&amp;#39;dart:io&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">arguments&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">HttpClient&lt;/span> &lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">HttpClient&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">..&lt;/span>&lt;span class="n">connectionFactory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span> &lt;span class="n">uri&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">String&lt;/span>&lt;span class="o">?&lt;/span> &lt;span class="n">proxyHost&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="o">?&lt;/span> &lt;span class="n">proxyPort&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">proxyHost&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">proxyPort&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">address&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">InternetAddress&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/var/run/docker.sock&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">type:&lt;/span> &lt;span class="n">InternetAddressType&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">unix&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Socket&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">startConnect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">address&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">..&lt;/span>&lt;span class="n">findProxy&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span> &lt;span class="n">uri&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="s1">&amp;#39;DIRECT&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kd">final&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">await&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getUrl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Uri&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">parse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http://localhost/_ping&amp;#39;&lt;/span>&lt;span class="p">)).&lt;/span>&lt;span class="n">then&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">statusCode&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">final&lt;/span> &lt;span class="n">responseText&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">await&lt;/span> &lt;span class="n">response&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">utf8&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">decoder&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">fold&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">String&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">String&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">y&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">responseText&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>実行結果 &lt;br/>&lt;/p></description></item><item><title>Work Angular Dart as single binary</title><link>https://blog.yuzumone.net/posts/work-angular-dart-as-single-binary/</link><pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/work-angular-dart-as-single-binary/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MzZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Caspar Camille Rubin on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>テンプレートをさくっと作成． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart create -t server-shelf foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">cd&lt;/span> foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ngdart create web
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>とりあえず shelf を動かしてみるとこんな感じ． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ dart bin/server.dart
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Server listening on port &lt;span class="m">8080&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022-03-27T09:27:03.905499 0:00:00.014259 GET &lt;span class="o">[&lt;/span>200&lt;span class="o">]&lt;/span> /
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022-03-27T09:27:09.375476 0:00:00.005037 GET &lt;span class="o">[&lt;/span>200&lt;span class="o">]&lt;/span> /echo/foo---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ curl http://localhost:8080/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello, World!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ curl http://localhost:8080/echo/foo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">foo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>次に Angular Dart の方を build して動かしてみます． &lt;br/>&lt;/p></description></item><item><title>Release tabler for displaying ASCII table format in Dart</title><link>https://blog.yuzumone.net/posts/release-tabler-for-displaying-ascii-table-format-in-dart/</link><pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/release-tabler-for-displaying-ascii-table-format-in-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Abel Y Costa on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>go-lang の tablewriter 的な ASCII テーブルで表示するやつが欲しかったの作りました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/tabler">tabler | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>example のとおりですが，こんな感じで使えます． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">t&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Tabler&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">22&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">333&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">t&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// +---+----+-----+
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// | a | b | c |
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// | 1 | 22 | 333 |
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// +---+----+-----+
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Dart は dart2native あるし，null safety だし Flutter が無かったとしても結構好きなんですが，こんな基本的と言えるライブラリが無いとは． &lt;br/>
+それだけ Flutter でしか使われてないんだろうなぁ． &lt;br/>&lt;/p></description></item><item><title>I tried Dart frontend using shelf</title><link>https://blog.yuzumone.net/posts/i-tried-dart-frontend-using-shelf/</link><pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-tried-dart-frontend-using-shelf/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1592178036823-ccb0e0e67562?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2hlbGZ8ZW58MHx8MHx8fDI%3D">
+&lt;/figure>
+
+&lt;p>backend はこちら． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://blog.yuzumone.net/posts/i-tried-dart-backend/">I tried Dart backend&lt;/a> &lt;br/>&lt;/p>
+&lt;p>Flutter Web とか AngularDart などあるんですけどちょっと雑にやりたいという場合です． &lt;br/>
+コードは下記の通り． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-dart" data-lang="dart">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">const&lt;/span> &lt;span class="n">index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;&amp;lt;!doctype html&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;head&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;link href=&amp;#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; integrity=&amp;#34;sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/head&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;body&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;main role=&amp;#34;role&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;h1 class=&amp;#34;mt-5&amp;#34;&amp;gt;{{ title }}&amp;lt;/h1&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/main&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;lt;/body&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;lt;/html&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">handler&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">const&lt;/span> &lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Pipeline&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">addMiddleware&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">logRequests&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">addHandler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">_echoRequest&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">await&lt;/span> &lt;span class="n">io&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">serve&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">handler&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_hostname&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Serving at http://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="n">server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">address&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">:&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="n">server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">port&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;span class="n">Future&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Response&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">_echoRequest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Request&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">template&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">output&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">template&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">renderString&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="s1">&amp;#39;title&amp;#39;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;hoge&amp;#39;&lt;/span>&lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;content-type&amp;#39;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;text/html&amp;#39;&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">shelf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ok&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nl">headers:&lt;/span> &lt;span class="n">headers&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>index.html を静的ファイルで用意するのが普通だと思うんですが，dart compile して動かしてみたかったので dart ファイルに収めました． &lt;br/>
+go-bindata などのように executable に静的ファイルを include するような仕組みが Dart にもあるといいですね． &lt;br/>
+気が向いたら作りたい． &lt;br/>&lt;/p></description></item><item><title>Migrating to null safety on Dart</title><link>https://blog.yuzumone.net/posts/migrating-to-null-safety-on-dart/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/migrating-to-null-safety-on-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1612953117963-5fd4f0736aa8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Jamie Davies on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>いよいよ Dart の null safety が stable となりました． &lt;br/>
+これまで何回か紹介しているライブラリ ipaddr を null safety にしていく過程をメモしておきます． &lt;br/>
+参考までに pullrq は下記です． &lt;br/>&lt;/p></description></item><item><title>I tried Dart backend</title><link>https://blog.yuzumone.net/posts/i-tried-dart-backend/</link><pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-tried-dart-backend/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1606300015207-d4e499ffca80?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8N3x8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Goran Ivos on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter には盛り上がりがみられる Dart でバックエンドもやってみました． &lt;br/>
+この時気になるのがフレームワークどうするか問題ですね． &lt;br/>
+メジャーどころは下記の 2 つです． &lt;br/>&lt;/p></description></item><item><title>That’s how I create flutter launcher icon</title><link>https://blog.yuzumone.net/posts/thats-how-i-create-flutter-launcher-icon/</link><pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/thats-how-i-create-flutter-launcher-icon/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1637607699029-8568cd757a5a?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFjJTIwZG9ja3xlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by TheRegisti on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>ランチャーアイコンを作ってくれる flutter_launcher_icons はとても便利です． &lt;br/>
+Android の Adaptive Icon を SVG でやりたい場合は不十分です（雑に見てみた感じ png しか指定できないようでした）． &lt;br/>&lt;/p></description></item><item><title>Flutter web oidc authentication</title><link>https://blog.yuzumone.net/posts/flutter-web-oidc-authentication/</link><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-web-oidc-authentication/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1562770584-eaf50b017307?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8a2V5fGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Kelly Sikkema on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter web で OpenID Connect やってたメモ． &lt;br/>
+以下を参考にしました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/openid_client">openid_client | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>まずは認証ページを出すところまで． &lt;br/>
+Flutter web は SPA なので Client Secret は渡せるようになっていますが渡しません． &lt;br/>&lt;/p></description></item><item><title>Flutter Android Release Build on GitHub Actions</title><link>https://blog.yuzumone.net/posts/flutter-android-release-build-on-github-actions/</link><pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-android-release-build-on-github-actions/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1590595906931-81f04f0ccebb?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTZ8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Richy Great on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="workflow-dot-yml">workflow.yml&lt;/h2>
+&lt;p>ほんと単純で keystore を用意して，いわゆる local.properties を作成して build しているだけですね． &lt;br/>
+flavor も考えるとつらいですが自分のケースの場合は — dart-define=&amp;lt;foo=bar&amp;gt; で済むケースがほとんどです． &lt;br/>&lt;/p></description></item><item><title>Encryption with private key in RSA using Dart</title><link>https://blog.yuzumone.net/posts/encryption-with-private-key-in-rsa-using-dart/</link><pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/encryption-with-private-key-in-rsa-using-dart/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1522794338816-ee3a17a00ae8?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGtleXxlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Debby Hudson on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>どうしても RSA Private key を使用して署名をしなきゃいけない案件があったのでやりました． &lt;br/>&lt;/p>
+&lt;p>使用したライブラリは下記です． &lt;br/>
+死ぬほど助かりました． &lt;br/>&lt;/p></description></item><item><title>Flutter web docker on GitHub Container Registry</title><link>https://blog.yuzumone.net/posts/flutter-web-docker-on-github-container-registry/</link><pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/flutter-web-docker-on-github-container-registry/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1504383633899-a17806f7e9ad?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDB8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by Victoire Joncheray on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>GitHub Container Registry が GA したみたいなので使ってみます． &lt;br/>
+ついでなので Flutter web で． &lt;br/>
+普通に docker push するのは普通過ぎるので actions でやります． &lt;br/>
+サンプルレポジトリは下記です． &lt;br/>&lt;/p></description></item><item><title>Build RPM Package of Python</title><link>https://blog.yuzumone.net/posts/build-rpm-package-of-python/</link><pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/build-rpm-package-of-python/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1577702312706-e23ff063064f?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Brandable Box on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Python パッケージの RPM 化といえば bdist_rpm がありますが，この場合依存パッケージも PRM 化する必要があります． &lt;br/>
+ということで venv でいい感じにパッケージ化するときの spec ファイルの内容をメモ． &lt;br/>&lt;/p></description></item><item><title>Making Flutter web apps responsive</title><link>https://blog.yuzumone.net/posts/making-flutter-web-apps-responsive/</link><pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/making-flutter-web-apps-responsive/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Domenico Loia on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter web でレスポンシブ対応したときのメモ． &lt;br/>
+responsive_builder を使うとめっちゃ簡単． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/responsive_builder">responsive_builder | Flutter Package&lt;/a> &lt;br/>&lt;/p>
+&lt;p>以下のようにデバイスに応じて Widget を返すようにするだけ． &lt;br/>&lt;/p></description></item><item><title>Testing out sembast</title><link>https://blog.yuzumone.net/posts/testing-out-sembast/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/testing-out-sembast/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&amp;amp;w=2048&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by fabio on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Flutter でモバイルだけでなくデスクトップや Web などマルチプラットフォームに対応している NoSQL データベースライブラリ sembast を使ってみたのでメモ． &lt;br/>&lt;/p></description></item><item><title>I created a Dart library that simplifies working with IP addresses</title><link>https://blog.yuzumone.net/posts/i-created-a-dart-library-that-simplifies-working-with-ip-addresses/</link><pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/i-created-a-dart-library-that-simplifies-working-with-ip-addresses/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1520085601670-ee14aa5fa3e8?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Alexandru Acea on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Dart で ipaddress をいい感じにするライブラリを作りました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/ipaddr">yuzumone/ipaddr&lt;/a> &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://pub.dev/packages/ipaddr">ipaddr | Dart Package&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="モチベーション">モチベーション&lt;/h2>
+&lt;p>生活していると「あーこのアドレスがこのセグメント内かどうか調べたいわー」となることが多いと思います． &lt;br/>
+これまでは Python でやることが多かったのですが，Dart でやりたい欲がふつふつと湧いてきました． &lt;br/>
+軽く見た感じ Python の ipaddress 相当のものがなさそうだったので作りました． &lt;br/>&lt;/p></description></item><item><title>Revisiting Android Spinners</title><link>https://blog.yuzumone.net/posts/revisiting-android-spinners/</link><pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/revisiting-android-spinners/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvZGluZ3xlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Emile Perron on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="arrays-dot-xml">arrays.xml&lt;/h2>
+&lt;p>arrays は string-array で設定します． &lt;br/>
+integer-array でやる場合は自分で spinner の xml を書かないといけなくなると思います． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;resources&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;string-array&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;message_count&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>100&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>200&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>500&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>1000&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>2000&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/string-array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/resources&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使う側">使う側&lt;/h2>
+&lt;p>string-array でやれば android.R.layout.simple_spinner_item と android.R.layout.simple_spinner_dropdown_item が使えるので楽です． &lt;br/>
+逆に android~ を使わない場合は自分で ArrayAdapter を作成して Spinner#setAdapter() すれば良さそうです． &lt;br/>&lt;/p></description></item><item><title>Using Firebase Cloud Messaging and Analytics without google-services.json</title><link>https://blog.yuzumone.net/posts/using-firebase-cloud-messaging-and-analytics-without-google-services-json/</link><pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/using-firebase-cloud-messaging-and-analytics-without-google-services-json/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1581051357242-e92ba4df7790?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZpcmViYXNlfGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Daniel Sturgess on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="イケてない">イケてない&lt;/h2>
+&lt;ul>
+&lt;li>GitHub に上げれないので CI/CD しようと思ったときめんどくさい &lt;br/>&lt;/li>
+&lt;li>apply plugin: ‘com.google.gms.google-services’ を app/build.gradle の 1 番下に書く必要がある &lt;br/>&lt;/li>
+&lt;li>FCM と com.google.gms.google-services の仲が悪い（らしい） &lt;br/>&lt;/li>
+&lt;/ul>
+&lt;p>ということで環境変数に APP_ID などを設定して FCM と Analytics を使う方法について書いていきます． &lt;br/>&lt;/p></description></item><item><title>Getting values from other Views in Android Data Binding</title><link>https://blog.yuzumone.net/posts/getting-values-from-other-views-in-android-data-binding/</link><pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/getting-values-from-other-views-in-android-data-binding/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1517852058149-07c7a2e65cc6?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Henri L. on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;layout&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">xmlns:android=&lt;/span>&lt;span class="s">&amp;#34;http://schemas.android.com/apk/res/android&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">xmlns:app=&lt;/span>&lt;span class="s">&amp;#34;http://schemas.android.com/apk/res-auto&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;data&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;variable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;viewModel&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type=&lt;/span>&lt;span class="s">&amp;#34;example.MyViewModel&amp;#34;&lt;/span>&lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/data&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;android.support.constraint.ConstraintLayout&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;match_parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;match_parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:padding=&lt;/span>&lt;span class="s">&amp;#34;16dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;android.support.design.widget.TextInputEditText&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:id=&lt;/span>&lt;span class="s">&amp;#34;@+id/edit_name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;0dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;wrap_content&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintStart_toStartOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintEnd_toEndOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;Button&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:id=&lt;/span>&lt;span class="s">&amp;#34;@+id/button_ok&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;0dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;wrap_content&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:onClick=&lt;/span>&lt;span class="s">&amp;#34;@{(v) -&amp;gt; viewModel.action(editName.getText().toString())}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintTop_toBottomOf=&lt;/span>&lt;span class="s">&amp;#34;@+id/edit_name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintStart_toStartOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintEnd_toEndOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/android.support.constraint.ConstraintLayout&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/layout&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ポイント &lt;br/>&lt;/p>
+&lt;ul>
+&lt;li>Java or Kotlin 側で使うように CamelCase で view の ID を書く &lt;br/>&lt;/li>
+&lt;/ul></description></item><item><title>Using Kotlin's ReadWriteProperty for modern Android Preference handling</title><link>https://blog.yuzumone.net/posts/using-kotlins-readwriteproprty-for-modern-android-preference-handling/</link><pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/using-kotlins-readwriteproprty-for-modern-android-preference-handling/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1588690154757-badf4644190f?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a290bGlufGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Louis Tsai on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Kotlin の ReadWriteProperty を使って Delegate して Preference をいい感じにするやつを使ってみました． &lt;br/>
+ちなみに ReadWriteProperty は以下のように定義されています． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">interface&lt;/span> &lt;span class="nc">ReadWriteProperty&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="k">in&lt;/span> &lt;span class="n">R&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.properties/-read-write-property/">ReadWriteProperty - Kotlin Programming Language&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="readwriteproperty">ReadWriteProperty&lt;/h2>
+&lt;p>例えば int を Preference に入れる ReadWriteProperty &lt;br/>&lt;/p></description></item><item><title>When told the APK can't be installed</title><link>https://blog.yuzumone.net/posts/when-told-the-apk-cant-be-installed/</link><pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/when-told-the-apk-cant-be-installed/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1630442923896-244dd3717b35?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Fahim Muntashir on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>最近 issue がとんできてて，そのときになんじゃこれ～と思ったのでメモ． &lt;br/>
+きた issue は以下． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/Recordachi/issues/9">Parsing error · Issue #9 · yuzumone/Recordachi&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="解決策">解決策&lt;/h2>
+&lt;p>APK を作成する際，Signature Versions を V1 と V2 にチェックを入れる． &lt;br/>&lt;/p></description></item><item><title>Created an Android library for multi-line ellipsizing</title><link>https://blog.yuzumone.net/posts/created-an-anroid-library-for-multi-line-ellipsizing/</link><pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/created-an-anroid-library-for-multi-line-ellipsizing/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1709547228697-fa1f424a3f39?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fHByb2dyYW1pbmd8ZW58MHx8MHx8fDI%3D">&lt;figcaption>
+ &lt;h4>Photo by Volodymyr Dobrovolskyy on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Android の TextView で複数行 Ellipsize してタップすると全文表示するようなライブラリを作ってみました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/ExpandableTextView">yuzumone/ExpandableTextView&lt;/a> &lt;br/>&lt;/p>
+&lt;p>動作は下の感じです． &lt;br/>&lt;/p>
+&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">作った &lt;a href="https://t.co/IcyLLXjG9P">pic.twitter.com/IcyLLXjG9P&lt;/a>&lt;/p>&amp;mdash; ゆずもね (@Yuzu_037) &lt;a href="https://twitter.com/Yuzu_037/status/872263123054452736?ref_src=twsrc%5Etfw">June 7, 2017&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+
+
+&lt;p>もともとすでに実装はしていて，今も Twltrus の Reply 送信画面では上の動作のような感じにはなっていました． &lt;br/>
+Twltrus の実装では Fragment で boolean を持っていて TextView の ClickListener のところで Ellipsize する・しないを切り替えていました． &lt;br/>
+CustomView にしたほうが TextView の状態を Activity や Fragment で気にしなくてよくなるよなというところです． &lt;br/>
+あとは Android が正式に Kotlin をサポートということで Kotlin でライブラリを作ってみました． &lt;br/>&lt;/p></description></item></channel></rss>

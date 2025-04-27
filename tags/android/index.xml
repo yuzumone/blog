@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/android/</link><description>Recent content in Android on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Mon, 27 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Revisiting Android Spinners</title><link>https://blog.yuzumone.net/posts/revisiting-android-spinners/</link><pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/revisiting-android-spinners/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvZGluZ3xlbnwwfHwwfHx8Mg%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Emile Perron on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="arrays-dot-xml">arrays.xml&lt;/h2>
+&lt;p>arrays は string-array で設定します． &lt;br/>
+integer-array でやる場合は自分で spinner の xml を書かないといけなくなると思います． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;resources&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;string-array&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;message_count&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>100&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>200&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>500&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>1000&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;item&amp;gt;&lt;/span>2000&lt;span class="nt">&amp;lt;/item&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/string-array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/resources&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使う側">使う側&lt;/h2>
+&lt;p>string-array でやれば android.R.layout.simple_spinner_item と android.R.layout.simple_spinner_dropdown_item が使えるので楽です． &lt;br/>
+逆に android~ を使わない場合は自分で ArrayAdapter を作成して Spinner#setAdapter() すれば良さそうです． &lt;br/>&lt;/p></description></item><item><title>Using Firebase Cloud Messaging and Analytics without google-services.json</title><link>https://blog.yuzumone.net/posts/using-firebase-cloud-messaging-and-analytics-without-google-services-json/</link><pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/using-firebase-cloud-messaging-and-analytics-without-google-services-json/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1581051357242-e92ba4df7790?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZpcmViYXNlfGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Daniel Sturgess on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="イケてない">イケてない&lt;/h2>
+&lt;ul>
+&lt;li>GitHub に上げれないので CI/CD しようと思ったときめんどくさい &lt;br/>&lt;/li>
+&lt;li>apply plugin: ‘com.google.gms.google-services’ を app/build.gradle の 1 番下に書く必要がある &lt;br/>&lt;/li>
+&lt;li>FCM と com.google.gms.google-services の仲が悪い（らしい） &lt;br/>&lt;/li>
+&lt;/ul>
+&lt;p>ということで環境変数に APP_ID などを設定して FCM と Analytics を使う方法について書いていきます． &lt;br/>&lt;/p></description></item><item><title>Getting values from other Views in Android Data Binding</title><link>https://blog.yuzumone.net/posts/getting-values-from-other-views-in-android-data-binding/</link><pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/getting-values-from-other-views-in-android-data-binding/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1517852058149-07c7a2e65cc6?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Henri L. on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;layout&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">xmlns:android=&lt;/span>&lt;span class="s">&amp;#34;http://schemas.android.com/apk/res/android&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">xmlns:app=&lt;/span>&lt;span class="s">&amp;#34;http://schemas.android.com/apk/res-auto&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;data&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;variable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;viewModel&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type=&lt;/span>&lt;span class="s">&amp;#34;example.MyViewModel&amp;#34;&lt;/span>&lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/data&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;android.support.constraint.ConstraintLayout&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;match_parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;match_parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:padding=&lt;/span>&lt;span class="s">&amp;#34;16dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;android.support.design.widget.TextInputEditText&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:id=&lt;/span>&lt;span class="s">&amp;#34;@+id/edit_name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;0dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;wrap_content&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintStart_toStartOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintEnd_toEndOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;Button&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:id=&lt;/span>&lt;span class="s">&amp;#34;@+id/button_ok&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_width=&lt;/span>&lt;span class="s">&amp;#34;0dp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:layout_height=&lt;/span>&lt;span class="s">&amp;#34;wrap_content&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">android:onClick=&lt;/span>&lt;span class="s">&amp;#34;@{(v) -&amp;gt; viewModel.action(editName.getText().toString())}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintTop_toBottomOf=&lt;/span>&lt;span class="s">&amp;#34;@+id/edit_name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintStart_toStartOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">app:layout_constraintEnd_toEndOf=&lt;/span>&lt;span class="s">&amp;#34;parent&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/android.support.constraint.ConstraintLayout&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/layout&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ポイント &lt;br/>&lt;/p>
+&lt;ul>
+&lt;li>Java or Kotlin 側で使うように CamelCase で view の ID を書く &lt;br/>&lt;/li>
+&lt;/ul></description></item><item><title>Using Kotlin's ReadWriteProperty for modern Android Preference handling</title><link>https://blog.yuzumone.net/posts/using-kotlins-readwriteproprty-for-modern-android-preference-handling/</link><pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/using-kotlins-readwriteproprty-for-modern-android-preference-handling/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1588690154757-badf4644190f?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a290bGlufGVufDB8fDB8fHwy">&lt;figcaption>
+ &lt;h4>Photo by Louis Tsai on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Kotlin の ReadWriteProperty を使って Delegate して Preference をいい感じにするやつを使ってみました． &lt;br/>
+ちなみに ReadWriteProperty は以下のように定義されています． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">interface&lt;/span> &lt;span class="nc">ReadWriteProperty&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="k">in&lt;/span> &lt;span class="n">R&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.properties/-read-write-property/">ReadWriteProperty - Kotlin Programming Language&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="readwriteproperty">ReadWriteProperty&lt;/h2>
+&lt;p>例えば int を Preference に入れる ReadWriteProperty &lt;br/>&lt;/p></description></item><item><title>When told the APK can't be installed</title><link>https://blog.yuzumone.net/posts/when-told-the-apk-cant-be-installed/</link><pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/when-told-the-apk-cant-be-installed/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1630442923896-244dd3717b35?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Fahim Muntashir on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>最近 issue がとんできてて，そのときになんじゃこれ～と思ったのでメモ． &lt;br/>
+きた issue は以下． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/Recordachi/issues/9">Parsing error · Issue #9 · yuzumone/Recordachi&lt;/a> &lt;br/>&lt;/p>
+&lt;h2 id="解決策">解決策&lt;/h2>
+&lt;p>APK を作成する際，Signature Versions を V1 と V2 にチェックを入れる． &lt;br/>&lt;/p></description></item><item><title>Created an Android library for multi-line ellipsizing</title><link>https://blog.yuzumone.net/posts/created-an-anroid-library-for-multi-line-ellipsizing/</link><pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/created-an-anroid-library-for-multi-line-ellipsizing/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1709547228697-fa1f424a3f39?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fHByb2dyYW1pbmd8ZW58MHx8MHx8fDI%3D">&lt;figcaption>
+ &lt;h4>Photo by Volodymyr Dobrovolskyy on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Android の TextView で複数行 Ellipsize してタップすると全文表示するようなライブラリを作ってみました． &lt;br/>&lt;/p>
+&lt;p>&lt;a href="https://github.com/yuzumone/ExpandableTextView">yuzumone/ExpandableTextView&lt;/a> &lt;br/>&lt;/p>
+&lt;p>動作は下の感じです． &lt;br/>&lt;/p>
+&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">作った &lt;a href="https://t.co/IcyLLXjG9P">pic.twitter.com/IcyLLXjG9P&lt;/a>&lt;/p>&amp;mdash; ゆずもね (@Yuzu_037) &lt;a href="https://twitter.com/Yuzu_037/status/872263123054452736?ref_src=twsrc%5Etfw">June 7, 2017&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+
+
+&lt;p>もともとすでに実装はしていて，今も Twltrus の Reply 送信画面では上の動作のような感じにはなっていました． &lt;br/>
+Twltrus の実装では Fragment で boolean を持っていて TextView の ClickListener のところで Ellipsize する・しないを切り替えていました． &lt;br/>
+CustomView にしたほうが TextView の状態を Activity や Fragment で気にしなくてよくなるよなというところです． &lt;br/>
+あとは Android が正式に Kotlin をサポートということで Kotlin でライブラリを作ってみました． &lt;br/>&lt;/p></description></item></channel></rss>

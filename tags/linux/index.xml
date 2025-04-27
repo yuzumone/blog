@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/linux/</link><description>Recent content in Linux on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sun, 11 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Arch Linux Install Battle</title><link>https://blog.yuzumone.net/posts/arch-linux-install-battle/</link><pubDate>Sun, 11 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/arch-linux-install-battle/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1577998555981-6e798325914e?w=800&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;q=60&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fHw%3D">&lt;figcaption>
+ &lt;h4>Photo by svklimkin on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>grub から systemd-boot にしたいなぁと思っていて，どうせなら綺麗にするかということで &lt;br/>&lt;/p>
+&lt;h2 id="environment">Environment&lt;/h2>
+&lt;ul>
+&lt;li>Surface Pro &lt;br/>&lt;/li>
+&lt;li>Type Cover Keyboard (US) &lt;br/>&lt;/li>
+&lt;/ul>
+&lt;h2 id="インターネット接続">インターネット接続&lt;/h2>
+&lt;p>WiFi でやっていく &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ip link &lt;span class="nb">set&lt;/span> wlan0 up
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wpa_supplicant -B -i wlan0 -c &amp;lt;&lt;span class="o">(&lt;/span>wpa_passphrase SSID password&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dhcpcd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="パーティションの作成">パーティションの作成&lt;/h2>
+&lt;p>gdisk と思ったら最近はワンライナーでいけるらしい &lt;br/>&lt;/p></description></item></channel></rss>

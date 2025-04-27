@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/kubernetes/</link><description>Recent content in Kubernetes on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Installing k3s on rasberry pi 5</title><link>https://blog.yuzumone.net/posts/installing-k3s-on-rasberry-pi-5/</link><pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/installing-k3s-on-rasberry-pi-5/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1631553127988-36343ac5bb0c?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Jainath Ponnala on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;h2 id="raspberry-pi-imager">Raspberry Pi Imager&lt;/h2>
+&lt;p>ssh とか昔は mkdir とかやった記憶なんですが，今は Imager の設定で ssh や鍵認証まで設定できるようになっていました． &lt;br/>&lt;/p>
+&lt;h2 id="static-ip">Static IP&lt;/h2>
+&lt;p>現在は NetworkManager で設定するのがナウいようです． &lt;br/>
+初期は設定ファイルがないので名前を設定することでまずはファイルを生成します． &lt;br/>&lt;/p></description></item></channel></rss>

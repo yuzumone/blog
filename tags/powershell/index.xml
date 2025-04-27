@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Powershell on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/powershell/</link><description>Recent content in Powershell on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Fri, 03 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/powershell/index.xml" rel="self" type="application/rss+xml"/><item><title>Get RedirectUri on PowerShell</title><link>https://blog.yuzumone.net/posts/get-redirecturi-on-powershell/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/get-redirecturi-on-powershell/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1545262810-77515befe149?q=80&amp;amp;w=2670&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Marc Rentschler on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>PowerShell で curl -w “%{redirect_url}” 相当がしたくなったのでメモ． &lt;br/>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="k">Param&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="no">String&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="nv">$Uri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$request&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nb">Invoke-WebRequest&lt;/span> &lt;span class="n">-Method&lt;/span> &lt;span class="n">Head&lt;/span> &lt;span class="n">-Uri&lt;/span> &lt;span class="nv">$Uri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$redirectedUri&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nv">$request&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">BaseResponse&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">ResponseUri&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">AbsoluteUri&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo &lt;/span>&lt;span class="nv">$redirectedUri&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
