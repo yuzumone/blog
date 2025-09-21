@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nix on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/nix/</link><description>Recent content in Nix on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sat, 16 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/nix/index.xml" rel="self" type="application/rss+xml"/><item><title>Try nix</title><link>https://blog.yuzumone.net/posts/try-nix/</link><pubDate>Sat, 16 Aug 2025 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/try-nix/</guid><description>&lt;figure>&lt;img src="https://images.unsplash.com/photo-1542601098-8fc114e148e2?q=80&amp;amp;w=2340&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;ixlib=rb-4.1.0&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">&lt;figcaption>
+ &lt;h4>Photo by Aditya Vyas on Unsplash&lt;/h4>
+ &lt;/figcaption>
+&lt;/figure>
+
+&lt;p>Nix に入門してみました． &lt;br/>
+homebrew 代替となる home-manager や nix-darwin などがありますが，今回は開発環境整備で利用してみることにします． &lt;br/>
+devcontainer 的な感じですね． &lt;br/>&lt;/p></description></item></channel></rss>

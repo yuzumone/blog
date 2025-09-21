@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terraform on yuzumone's blog</title><link>https://blog.yuzumone.net/tags/terraform/</link><description>Recent content in Terraform on yuzumone's blog</description><generator>Hugo</generator><language>ja-jp</language><lastBuildDate>Sun, 21 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yuzumone.net/tags/terraform/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduce Terraform</title><link>https://blog.yuzumone.net/posts/introduce-terraform/</link><pubDate>Sun, 21 Sep 2025 00:00:00 +0000</pubDate><guid>https://blog.yuzumone.net/posts/introduce-terraform/</guid><description>&lt;p>最近転職活動を少しやっていまして，その中でお断りされる理由が以下の 2 つです． &lt;br/>&lt;/p>
+&lt;ol>
+&lt;li>パブリッククラウドの経験 &lt;br/>
+これはプライベートクラウドをばりばりやっている弊社ではどうしようもない． &lt;br/>
+その代わり自社 DC 運用経験というのがあるわけですが，オンプレの「オ」の字も考えていない企業からしたらムダな経験ってワケですね． &lt;br/>&lt;/li>
+&lt;li>Terraform の経験 &lt;br/>
+パブリッククラウドの IaC を Terraform でやるなんてもう当たり前です． &lt;br/>
+上述のとおりプライベートクラウドかつ自社向け PF が提供されているので，これまで利用する必要がありませんでした． &lt;br/>&lt;/li>
+&lt;/ol>
+&lt;p>正直 Terraform というか構成管理については Python Fabric から始まり，Chef を利用しそこから Ansible に移行するまで実施していたので，やればできるだろぐらいに考えていました． &lt;br/>
+とはいえ Terraform の実務経験がないことに渋られるのもなんかムカついてきたので，チーム内で Terraform を利用することにしました． &lt;br/>
+利用するだけだと職務経歴書に書いても響かないと思うので，Provider の作成も実施しました． &lt;br/>
+今回は Terraform Provider を自作して導入してみた，ということで記事を書かせていただきます． &lt;br/>&lt;/p></description></item></channel></rss>
